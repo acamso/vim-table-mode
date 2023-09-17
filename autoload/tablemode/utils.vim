@@ -21,7 +21,7 @@ endfunction
 " function! tablemode#utils#strlen {{{2
 " To count multibyte characters accurately
 function! tablemode#utils#strlen(text)
-  return strlen(substitute(a:text, '.', 'x', 'g'))
+  return strlen(substitute(substitute(a:text, '\[\([^]]\+\)]([^)]\+)', '\1', 'g'), '.', 'x', 'g'))
 endfunction
 
 function! tablemode#utils#StrDisplayWidth(string) "{{{2
